@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
 @Entity
@@ -25,6 +26,9 @@ public class Product {
     //information que nous ne souhaitons pas exposer
     private int prixAchat;
 
+    @Transient
+    private int marge;
+
     //constructeur par défaut
     public Product() {
     }
@@ -35,6 +39,10 @@ public class Product {
         this.nom = nom;
         this.prix = prix;
         this.prixAchat = prixAchat;
+    }
+
+    public int getMarge() {
+        return prix - prixAchat;
     }
 
     public int getId() {
