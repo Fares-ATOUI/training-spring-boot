@@ -69,6 +69,11 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping(value = "/ProduitsTries")
+    public ResponseEntity trierProduitsParOrdreAlphabetique() {
+        List<Product> products = productDao.findAllByOrderByNomAsc();
+        return ResponseEntity.ok(products);
+    }
 
     //ajouter un produit
     @PostMapping(value = "/Produits")
